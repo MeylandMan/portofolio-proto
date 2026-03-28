@@ -1,0 +1,1158 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+:root {
+  --site-font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+html,
+body {
+  height: 100%;
+  background-color: #000;
+  overscroll-behavior: none;
+}
+html{
+  background-color: #000;
+  background: linear-gradient(180deg, #050505 0%, #0b0b0b 100%);
+  overscroll-behavior: none;
+}
+body {
+  background-color: #000;
+  background: linear-gradient(180deg, #050505 0%, #0b0b0b 100%);
+  color: #fff;
+
+  min-height: 100vh;
+  background-attachment: fixed;
+  overscroll-behavior: none;
+  font-family: var(--site-font);
+  line-height: 1.4;
+}
+
+.site-nav{
+  position:fixed;
+  top:0;left:0;right:0;
+  height:56px;
+  display:flex;
+  align-items:center;
+  z-index:1100;
+  padding:0 1rem;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  backdrop-filter: blur(6px) saturate(0.9);
+  border-bottom:1px solid rgba(255,255,255,0.02);
+}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;width:100%}
+.nav-left .site-title{color:#9ca3af;text-decoration:none;font-weight:800;font-size:0.95rem;padding:8px 6px}
+.nav-right{display:flex;align-items:center;gap:0.45rem}
+.nav-link{display:inline-flex;align-items:center;justify-content:center;padding:8px;border-radius:8px;text-decoration:none}
+.nav-link img{width:18px;height:18px;display:block;filter:invert(1) brightness(1);opacity:0.95}
+.nav-link:hover{background:rgba(255,255,255,0.02)}
+.nav-cta{margin-left:6px;padding:6px 10px;border-radius:999px;background:transparent;border:1px solid rgba(255,255,255,0.06);color:#fff;font-weight:700;text-decoration:none}
+.nav-bubble{margin-left:8px;padding:6px 12px;border-radius:999px;background:#007aff;color:#fff;text-decoration:none;font-weight:800;box-shadow:0 8px 22px rgba(0,122,255,0.12)}
+
+main{padding-top:64px}
+
+@media (max-width:880px){
+  .nav-inner{padding:0 8px}
+  .nav-right .nav-cta{display:none}
+  .nav-right .nav-bubble{display:none}
+  .nav-right{gap:8px}
+}
+
+.mobile-nav-toggle{display:none;border:0;background:transparent;padding:6px;border-radius:8px}
+.mobile-nav-toggle img{width:18px;height:18px;filter:invert(1) brightness(1)}
+
+@media (max-width:720px){
+  .nav-right{display:none}
+  .mobile-nav-toggle{display:inline-flex;align-items:center;justify-content:center}
+}
+
+.mobile-nav-backdrop{position:fixed;inset:0;background:rgba(0,0,0,0.45);z-index:1200;opacity:0;pointer-events:none;transition:opacity .24s ease}
+.mobile-nav-backdrop[hidden]{display:none}
+.mobile-sidebar{position:fixed;top:0;right:0;height:100%;width:84%;max-width:320px;background:linear-gradient(180deg,#070707,#0b0b0b);z-index:1250;box-shadow: -8px 0 30px rgba(0,0,0,0.6);transform:translateX(110%);transition:transform .32s cubic-bezier(.2,.9,.2,1);padding:2.2rem 1.25rem;display:flex;flex-direction:column;gap:1rem}
+.mobile-sidebar[aria-hidden="true"]{visibility:hidden}
+.mobile-sidebar[aria-hidden="false"]{visibility:visible}
+.mobile-sidebar ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:0.45rem}
+.mobile-sidebar a{display:block;padding:0.9rem 0.6rem;color:#e6eef2;text-decoration:none;font-weight:700;border-radius:8px}
+.mobile-sidebar a:hover{background:rgba(255,255,255,0.02)}
+.mobile-sidebar.open{transform:translateX(0)}
+.mobile-nav-backdrop.open{opacity:1;pointer-events:auto}
+html{scroll-behavior:smooth}
+:root{--nav-height:64px}
+section{scroll-margin-top:calc(var(--nav-height) + 8px)}
+
+
+.hero{
+  min-height: calc(100vh - var(--nav-height));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  position:relative;
+  padding:6vh 1rem;
+}
+.hero-inner{
+  max-width:1200px;
+  width:100%;
+  padding:0 1rem;
+}
+
+.hero { position: relative; }
+.hero-network {
+  position: absolute;
+  inset: 0; /* top:0; right:0; bottom:0; left:0 */
+  width: 100%;
+  height: 100%;
+  z-index: 0; /* behind the .hero-inner */
+  pointer-events: none; /* make it non-interactive */
+}
+.hero-inner { position: relative; z-index: 1; }
+.hero-name{
+  color:#8b8f94;
+  font-weight:700;
+  font-size:clamp(1rem,2.4vw,1.4rem);
+  margin-bottom:1.6rem;
+  opacity:0.95;
+}
+.hero-heading{
+  color:#fff;
+  font-weight:800;
+  line-height:0.98;
+  margin:0 auto;
+  /* Taille réduite de 50% sur min / vw / max */
+  font-size:clamp(1.9rem,6.5vw,6rem);
+  letter-spacing:-0.01em;
+  -webkit-font-smoothing:antialiased;
+  text-wrap:balance;
+  word-break:break-word;
+}
+
+.hero-heading .hero-word{display:inline-block;opacity:0;transform:translateY(18px) scale(.98);transition:transform .60s cubic-bezier(.2,.9,.25,1), opacity .50s ease;will-change:transform,opacity}
+.hero-heading .hero-word.is-visible{opacity:1;transform:translateY(0) scale(1)}
+
+.contact-cta{opacity:0;transform:translateY(8px);transition:opacity .4s ease, transform .36s cubic-bezier(.2,.9,.25,1)}
+.contact-cta.is-visible{opacity:1;transform:none}
+
+@media (prefers-reduced-motion: reduce){
+  .hero-heading .hero-word{transition:none;opacity:1;transform:none}
+  .contact-cta{transition:none;opacity:1;transform:none}
+}
+.hero-shadow{
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  bottom:8vh;
+  width:160px;
+  height:260px;
+  background:linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.01) 30%, rgba(0,0,0,0));
+  filter:blur(40px);
+  opacity:0.6;
+  pointer-events:none;
+}
+
+
+
+.contact-cta{
+  display:inline-flex;
+  align-items:center;
+  gap:0.6rem;
+  /* push the CTA a bit lower so it's not too close to the hero title */
+  margin:3.5rem auto 0;
+  padding:0.75rem 1.15rem; /* same as .github-cta */
+  background: linear-gradient(180deg,#007aff 0%, #0062d6 100%); /* match .download-cv */
+  color:#fff;
+  border-radius:10px; /* same shape as .github-cta */
+  font-weight:700;
+  font-size:1rem;
+  text-decoration:none;
+  box-shadow:0 8px 22px rgba(0,122,255,0.12); /* blue variant of .github-cta shadow */
+  position:relative;
+  z-index:4; /* above hero-shadow */
+  border:1px solid rgba(255,255,255,0.06);
+  transition: transform .18s ease, filter .12s ease;
+}
+.contact-cta img{filter:invert(1);width:20px;height:20px;display:block}
+.contact-cta:hover{
+  /* more prominent lift + subtle scale for the primary hero CTA */
+  transform:translateY(-6px) scale(1.02);
+  filter:brightness(1.06) saturate(1.02);
+  box-shadow:0 14px 34px rgba(0,122,255,0.18);
+}
+.contact-cta:active{transform:translateY(-1px)}
+.contact-cta:focus{outline:2px solid rgba(255,255,255,0.08);outline-offset:3px}
+
+.contact-cta::before{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  width:220px;
+  height:64px;
+  background:radial-gradient(circle at center, rgba(0,122,255,0.26) 0%, rgba(0,122,255,0.12) 22%, rgba(0,122,255,0.04) 45%, transparent 70%);
+  filter:blur(16px) saturate(1.05);
+  border-radius:10px; /* rounded halo to match button */
+  pointer-events:none;
+  opacity:0.95;
+}
+
+@media (max-width:720px){
+  .contact-cta{font-size:0.95rem;padding:0.55rem 0.9rem}
+  .contact-cta::before{width:180px;height:56px}
+}
+
+.faceid-overlay{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  /* Fully obscure the page during Face ID intro: near-black + strong blur */
+  background: rgba(0,0,0,0.98);
+  backdrop-filter: blur(12px) saturate(0.95);
+}
+.faceid-overlay.hidden{opacity:0;visibility:hidden;pointer-events:none}
+
+/* iOS-like fade-out: slightly scale + fade the overlay and soften blur */
+.faceid-overlay.fade-out{
+  opacity: 0;
+  transform: scale(1.06);
+  transition: opacity .45s cubic-bezier(.2,.8,.2,1), transform .45s cubic-bezier(.2,.8,.2,1), backdrop-filter .45s ease;
+  backdrop-filter: blur(1px);
+}
+.canvas{display:flex;height:100vh;width:100%;align-items:center;justify-content:center;background:transparent}
+.face-id-wrapper{width:100px;height:100px;margin:auto;position:relative}
+.face-id-wrapper svg{position:absolute;fill:transparent;stroke:rgba(255,255,255,0.92);width:100%;height:100%;transition:stroke .25s ease, opacity .25s ease}
+
+/* Small hint shown on mobile to instruct 'press and hold' for sound */
+.faceid-hint{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) translateY(18px);
+  bottom: -110px;
+  color: #e6eef2;
+  background: transparent;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  font-size: 0.95rem;
+  font-family: inherit;
+  font-weight: 600;
+  white-space: nowrap;
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .90s cubic-bezier(.2,.9,.2,1), transform .90s cubic-bezier(.2,.9,.2,1);
+}
+
+/* We'll use the existing reveal-on-scroll utilities (add .is-visible to show).
+   Remove the overlay-specific override to avoid selector conflicts. */
+
+.face-id-wrapper .circle{border-radius:50%;border:4px solid #000;width:100px;height:100px;background:transparent;box-sizing:border-box;position:absolute;opacity:0;transition:opacity .45s ease, transform 1.2s cubic-bezier(.2,.9,.3,1), border-color .3s ease}
+.face-id-wrapper .circle.green{border-color:#88ef88;box-shadow:0 18px 40px rgba(136,239,136,0.08);background:rgba(136,239,136,0.03)}
+.face-id-wrapper .circle.blue{border-color:#0aaaf7;box-shadow:0 18px 40px rgba(10,170,247,0.08);background:rgba(10,170,247,0.03)}
+.face-id-wrapper .circle.purple{border-color:#ea54ea;box-shadow:0 18px 40px rgba(234,84,234,0.08);background:rgba(234,84,234,0.03)}
+
+.face-id-wrapper.active .face-id-default{opacity:0;transform:scale(1.2);transition:opacity 1.5s, transform 1s;fill:lightblue;stroke:lightblue}
+.face-id-wrapper.active .circle{opacity:1;transition:opacity .7s, transform 2.2s}
+.face-id-wrapper.active .circle.green{transform:rotateX(360deg)}
+.face-id-wrapper.active .circle.blue{transform:rotateY(360deg)}
+.face-id-wrapper.active .circle.purple{transform:rotateY(360deg) rotateX(360deg)}
+
+.face-id-wrapper.completed .circle.purple{border-color:#fff;transition:border .7s}
+.path-tick{opacity:0}
+.face-id-wrapper.completed .path-tick{stroke-dasharray:49.497474670410156;stroke-dashoffset:0;animation:dash .6s linear forwards;stroke-opacity:1;transition:stroke-opacity .1s step;opacity:1}
+
+@keyframes dash{0%{stroke-dashoffset:49.497474670410156;stroke-opacity:1}60%{stroke-dashoffset:49.497474670410156}100%{stroke-dashoffset:0;stroke-opacity:1}}
+
+body.overlay-active main,
+body.overlay-active footer{
+  opacity:0;
+  transform:scale(0.998);
+  transition:opacity .2s ease, transform .2s ease;
+  pointer-events:none;
+  user-select:none;
+}
+
+@media (max-width:720px){
+  .face-id-wrapper{width:80px;height:80px}
+  .face-id-wrapper .circle{width:80px;height:80px}
+  /* slightly less offset on small screens so the hint stays visible */
+  .faceid-hint{bottom:-90px; font-size:0.9rem}
+}
+
+.intro-summary{padding:4rem 1rem;background:#050505; margin-top:6rem;}
+.intro-inner{max-width:1200px;margin:0 auto;display:flex;gap:2.5rem;align-items:center}
+.intro-left{flex:1;min-width:260px}
+.intro-right{flex:1;display:flex;align-items:center;justify-content:center;position:relative}
+.intro-left h2{font-size:clamp(1.4rem,3.5vw,2.4rem);color:#fff;margin-bottom:1rem;font-weight:800}
+.intro-copy{color:#d1d5db;font-size:1.05rem;line-height:1.45;margin-bottom:.8rem}
+.intro-image{
+  /* Do not crop: keep full image visible and scale down for sharpness */
+  display:block;
+  width:auto; /* allow wrapper to shrink-wrap the image so the button centers */
+  max-width:200px; /* keep existing maximum width */
+  height:auto;
+  object-fit:contain; /* ensure no cropping */
+  border-radius:0;
+  box-shadow:none;
+  background:transparent;
+  image-rendering: auto;
+}
+
+.intro-right{position:relative;display:flex;align-items:center;justify-content:center}
+.intro-image-wrap{position:relative;display:inline-flex;flex-direction:column;align-items:center;gap:.5rem;overflow:visible}
+.intro-image-wrap::before{
+  content:"";
+  position:absolute;
+  z-index:0;
+  left:50%;top:50%;
+  transform:translate(-50%,-50%) scale(1.06);
+  width:calc(100% + 48px);
+  height:calc(100% + 48px);
+  /* no rounded rect so there is no visible frame */
+  background-image: url('../../public/images/nathan%20memoji.png');
+  background-size: cover;
+  background-position: center;
+  filter: blur(18px) saturate(1.5) brightness(0.66);
+  opacity:0.82; /* lower so UI elements above it contrast better */
+  pointer-events:none;
+}
+.intro-image{position:relative;z-index:2;border-radius:0;box-shadow:none}
+
+.download-cv{
+  --btn-shift: -4px; /* tweak this value to adjust horizontal centering */
+  display:inline-flex;
+  align-items:center;
+  gap:0.5rem;
+  text-decoration:none;
+  color:#fff;
+  background: linear-gradient(180deg,#007aff 0%, #0062d6 100%);
+  padding:0.45rem 0.9rem;
+  border-radius:10px;
+  font-weight:600;
+  font-size:0.95rem;
+  box-shadow: 0 10px 28px rgba(0,122,255,0.22), 0 1px 0 rgba(255,255,255,0.02) inset;
+  position:relative;
+  z-index:3; /* ensure it sits above the blurred pseudo-element */
+  border:1px solid rgba(255,255,255,0.06);
+  transform: translateX(var(--btn-shift));
+}
+.download-cv:hover{filter:brightness(.98);transform:translateX(var(--btn-shift)) translateY(-1px)}
+.download-cv:active{transform:translateX(var(--btn-shift)) translateY(0)}
+.download-icon{width:16px;height:16px;display:inline-block;filter:invert(1) brightness(1)}
+
+@media (max-width:880px){
+  .intro-inner{flex-direction:column}
+  .intro-right{order:2}
+  .intro-video{height:220px;max-width:100%}
+}
+@media (max-width:720px){
+  /* Reduce the added top spacing on small screens so content isn't pushed too far down */
+  .intro-summary{margin-top:3rem}
+}
+
+:root{--carousel-slide-w:140px;--carousel-slide-h:96px;--carousel-visible-w:960px;--carousel-speed:52s}
+.carousel-section{padding:2.5rem 1rem;background:transparent}
+.carousel-inner{max-width:1100px;margin:0 auto}
+.carousel-inner h2{font-size:1.5rem;margin-bottom:.75rem;font-weight:800;color:#fff;display:inline-flex;align-items:center;gap:.6rem}
+.carousel-slider{background:linear-gradient(180deg,#0b0b0b 0%, #050505 100%);box-shadow:0 10px 20px -5px rgba(0,0,0,0.35);height:var(--carousel-slide-h);margin:0 auto;overflow:hidden;position:relative;max-width:var(--carousel-visible-w);}
+.carousel-slider::before,.carousel-slider::after{content:"";position:absolute;top:0;width:180px;height:100%;z-index:2;background:linear-gradient(to right, rgba(11,11,11,1) 0%, rgba(11,11,11,0) 100%)}
+.carousel-slider::after{right:0;transform:rotateZ(180deg)}
+.slide-track{display:flex;width:calc(var(--carousel-slide-w) * 14);align-items:center}
+.slide{flex:0 0 var(--carousel-slide-w);height:var(--carousel-slide-h);display:flex;align-items:center;justify-content:center;padding:8px}
+.slide img{max-width:100%;max-height:100%;object-fit:contain;display:block;filter:brightness(1) saturate(1)}
+
+/* Tools: scroll right -> left (normal) */
+
+.tools-slider .slide-track{animation:scroll var(--carousel-speed) linear infinite}
+
+/* Skills: scroll left -> right (reverse) */
+.skills-slider .slide-track{animation:scroll var(--carousel-speed) linear infinite reverse}
+
+@keyframes scroll{
+  0%{transform:translateX(0)}
+  100%{transform:translateX(calc(-1 * var(--carousel-slide-w) * 7))}
+}
+
+/* responsive: reduce slide size on small screens */
+@media (max-width:720px){
+  :root{--carousel-slide-w:110px;--carousel-slide-h:72px;--carousel-visible-w:100%}
+  .carousel-slider::before,.carousel-slider::after{width:90px}
+}
+
+.carousel-slider:hover .slide-track,
+.carousel-slider:focus-within .slide-track {
+  animation-play-state: paused !important;
+}
+
+.carousel-slider .slide:focus-within ~ .slide-track,
+.carousel-slider .slide:focus {
+  outline: none;
+}
+
+/* Formation / Education section styles */
+.formation-section{padding:3.5rem 1rem;background:transparent}
+.formation-inner{max-width:1100px;margin:0 auto}
+.formation-inner h2{font-size:2.2rem;margin-bottom:1.25rem;font-weight:800;color:#fff;display:inline-flex;align-items:center;gap:0.75rem}
+.formation-h2-icon{width:20px;height:20px;display:inline-block;filter:invert(1) brightness(1)}
+.formation-list{display:block}
+.formation-item{display:flex;gap:1rem;align-items:flex-start}
+.formation-media{width:56px;flex:0 0 56px}
+.formation-logo{width:56px;height:56px;display:block;object-fit:contain}
+.formation-body{flex:1}
+.formation-row{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.formation-info{min-width:0}
+.formation-school{font-weight:700;font-size:1.05rem;color:#111827; /* will be adjusted for dark bg below */}
+.formation-degree{color:#111827;opacity:0.85;margin-top:4px}
+.formation-dates{color:#9ca3af;margin-top:6px}
+
+
+/* dark-mode adjustments: text should be visible on the site's dark background */
+.formation-inner h2{color:#fff}
+.formation-school{color:#fff}
+.formation-degree{color:#d1d5db}
+
+.formation-list .formation-item{
+  position:relative; /* nécessaire pour le pseudo-élément */
+  border-radius:12px;
+  transition: transform .34s cubic-bezier(.2,.9,.25,1), box-shadow .34s ease;
+  will-change: transform, box-shadow;
+}
+.formation-list .formation-item::after{
+  /* surbrillance douce : radial violet très subtil, invisible par défaut */
+  content: "";
+  position:absolute;
+  left:0;right:0;top:0;bottom:0;
+  border-radius:12px;
+  background: radial-gradient(1200px 420px at 20% 50%, rgba(124,58,237,0.12) 0%, rgba(124,58,237,0.06) 18%, rgba(0,0,0,0) 45%);
+  opacity:0;
+  pointer-events:none;
+  transition: opacity .36s ease, transform .36s ease;
+  transform: scale(0.995);
+  z-index:0;
+}
+.formation-list .formation-item:hover,
+.formation-list .formation-item:focus-within{
+  /* conserve la surbrillance et l'ombre mais supprime le décalage horizontal */
+  transform: none !important;
+  box-shadow: 0 14px 40px rgba(2,6,23,0.6), 0 8px 28px rgba(124,58,237,0.06);
+}
+.formation-list .formation-item:hover::after,
+.formation-list .formation-item:focus-within::after{
+  opacity:1;
+  transform: scale(1.02);
+}
+
+.formation-list .formation-item > *{position:relative;z-index:1}
+
+@media (max-width:720px){
+  .formation-list .formation-item{transition: transform .28s ease}
+  .formation-list .formation-item:hover,
+  .formation-list .formation-item:focus-within{transform:translateX(8px)}
+}
+
+/* ---------- Expérience ---------- */
+.experience-section{padding:3.5rem 1rem;background:transparent}
+.experience-inner{max-width:1100px;margin:0 auto}
+.experience-inner h2{font-size:2.2rem;margin-bottom:1.25rem;font-weight:800;color:#fff;display:inline-flex;align-items:center;gap:0.75rem}
+.experience-h2-icon{width:20px;height:20px;display:inline-block;filter:invert(1) brightness(1)}
+.experience-list{display:block}
+.experience-item{display:flex;gap:1rem;align-items:flex-start;padding:1rem 0;border-bottom:1px solid rgba(255,255,255,0.04)}
+
+/* When an experience-item groups multiple entries, stack them vertically
+  so that each entry has its media at left and body at right. */
+.experience-item.grouped{flex-direction:column}
+.experience-item.grouped > .experience-entry{padding:0}
+
+/* Ensure all grouped entries share the same left edge for the body column
+   so dates align precisely. We switch the grouped container to a two-column
+   grid (media / body) and let each sub-entry's children participate in that
+   grid using `display: contents`. This keeps the DOM markup but aligns
+   every `.experience-body` at the same x-position. */
+.experience-item.grouped{
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 10px 1rem;
+  align-items: start;
+}
+.experience-item.grouped .experience-entry{display:contents}
+.experience-item.grouped .experience-entry-sep{grid-column:1 / -1}
+
+/* Fallback: on small screens we revert to stacked flex rows for better
+   touch layout and to preserve the previous responsive rules. */
+@media (max-width:880px){
+  .experience-item.grouped{display:block}
+  .experience-item.grouped .experience-entry{display:flex}
+  .experience-item.grouped .experience-entry .experience-media{flex:0 0 56px}
+  .experience-item.grouped .experience-entry .experience-body{flex:1}
+}
+.experience-item:last-child{border-bottom:none}
+.experience-media{width:56px;flex:0 0 56px}
+.experience-logo{width:56px;height:56px;display:block;object-fit:contain;border-radius:6px;background:rgba(255,255,255,0.02);padding:6px}
+.experience-body{flex:1}
+.experience-row{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+
+/* For grouped experience entries, use a two-column grid so the date column
+   has consistent horizontal positioning across entries. This prevents the
+   right-side date from shifting between stacked entries. */
+.experience-item.grouped .experience-entry .experience-row{
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem;
+  align-items: center;
+}
+.experience-info{min-width:0}
+.experience-title{font-weight:700;font-size:1.05rem;color:#fff}
+.experience-company{color:#9ca3af;margin-top:4px}
+.experience-dates{color:#9ca3af;margin-top:0}
+.experience-location{color:#9ca3af;margin-top:6px}
+.experience-desc{color:#d1d5db;margin-top:8px}
+
+/* Appliquer le même effet que Formation : décalage à droite + surbrillance fluide */
+.experience-list .experience-item{
+  position:relative; /* pour le pseudo-élément */
+  border-radius:12px;
+  transition: transform .34s cubic-bezier(.2,.9,.25,1), box-shadow .34s ease;
+  will-change: transform, box-shadow;
+}
+.experience-list .experience-item::after{
+  content: "";
+  position:absolute;left:0;right:0;top:0;bottom:0;border-radius:12px;
+  background: radial-gradient(1200px 420px at 80% 50%, rgba(10,170,247,0.08) 0%, rgba(10,170,247,0.04) 18%, rgba(0,0,0,0) 45%);
+  opacity:0;pointer-events:none;transition: opacity .36s ease, transform .36s ease;transform:scale(0.995);z-index:0;
+}
+.experience-list .experience-item:hover,
+.experience-list .experience-item:focus-within{
+  transform: translateX(12px);
+  box-shadow: 0 14px 40px rgba(2,6,23,0.6), 0 8px 28px rgba(10,170,247,0.04);
+}
+.experience-list .experience-item:hover::after,
+.experience-list .experience-item:focus-within::after{opacity:1;transform:scale(1.02)}
+.experience-list .experience-item > *{position:relative;z-index:1}
+
+/* Sub-entry layout when multiple experiences are grouped inside one `.experience-item`.
+   Keep the same visual structure (media left, body right) but stack entries vertically. */
+.experience-item .experience-entry{
+  display:flex;
+  gap:1rem;
+  align-items:flex-start;
+  padding:0.75rem 0;
+}
+.experience-item .experience-entry .experience-media{flex:0 0 56px}
+.experience-item .experience-entry .experience-body{flex:1}
+.experience-item .experience-entry-sep{height:1px;background:transparent;border-top:1px solid rgba(255,255,255,0.03);margin:6px 0 8px 0}
+.experience-item .experience-entry + .experience-entry{margin-top:0.6rem}
+
+@media (max-width:720px){
+  .experience-list .experience-item{transition: transform .28s ease}
+  .experience-list .experience-item:hover,
+  .experience-list .experience-item:focus-within{transform:translateX(8px)}
+}
+
+.experience-list .experience-item:nth-of-type(2):hover,
+.experience-list .experience-item:nth-of-type(2):focus-within{
+  transform: none !important;
+  /* conservez les mêmes ombres que la règle générale pour l'apparence */
+  box-shadow: 0 14px 40px rgba(2,6,23,0.6), 0 8px 28px rgba(10,170,247,0.04);
+}
+
+@media (max-width:720px){
+  .experience-list .experience-item:nth-of-type(2):hover,
+  .experience-list .experience-item:nth-of-type(2):focus-within{
+    transform: none !important;
+  }
+}
+
+.experience-list .experience-item.no-reveal:hover,
+.experience-list .experience-item.no-reveal:focus-within {
+  transform: none !important;
+  /* keep hover/focus shadow to preserve visual feedback */
+  box-shadow: 0 14px 40px rgba(2,6,23,0.6), 0 8px 28px rgba(10,170,247,0.04);
+}
+
+@media (max-width:720px) {
+  .experience-list .experience-item.no-reveal:hover,
+  .experience-list .experience-item.no-reveal:focus-within {
+    transform: none !important;
+  }
+}
+
+/* ---------- Contributions (GitHub calendar) ---------- */
+.contributions-section{padding:3.5rem 1rem;background:transparent}
+.contributions-inner{max-width:1100px;margin:0 auto;text-align:center}
+.contributions-inner h2{font-size:2rem;margin-bottom:6px;display:inline-flex;align-items:center;gap:0.8rem}
+.contrib-sub{color:#9ca3af;margin-bottom:1.25rem}
+.github-calendar-card{background:linear-gradient(180deg,#0b0b0b 0%, #070707 100%);border:1px solid rgba(255,255,255,0.04);box-shadow:0 18px 50px rgba(2,6,23,0.7);padding:2rem}
+.github-calendar-card .calendar{width:100%;max-width:1000px}
+.contrib-legend{color:#9ca3af;margin-top:6px;font-weight:500}
+.github-cta{display:inline-flex;align-items:center;gap:0.6rem;margin-top:0.9rem;padding:0.75rem 1.15rem;background: rgba(12,14,16,0.6); color:#fff; text-decoration:none; border:1px solid rgba(255,255,255,0.06); border-radius:10px; font-weight:700; box-shadow: inset 0 1px 0 rgba(255,255,255,0.02), 0 8px 22px rgba(2,6,23,0.6); position:relative; z-index:2}
+.github-cta::before{content:"";position:absolute;z-index:-1;left:50%;top:50%;transform:translate(-50%,-50%);width:220px;height:64px;background:radial-gradient(circle at center, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.03) 22%, rgba(0,0,0,0) 45%);filter:blur(16px) saturate(1.05);border-radius:10px;pointer-events:none;opacity:0.95}
+.github-cta img{filter:invert(1);width:20px;height:20px}
+.github-cta:hover{filter:brightness(0.95)}
+
+@media (max-width:720px){
+  .github-calendar-card{padding:1rem}
+  .contributions-inner h2{font-size:1.5rem}
+}
+
+/* Additional polish for GitHub calendar to match site UX */
+.github-calendar-card{background:linear-gradient(180deg,#0b0b0b 0%, #070707 100%);border:1px solid rgba(255,255,255,0.04);box-shadow:0 18px 50px rgba(2,6,23,0.7);padding:2rem}
+.contributions-inner h2{color:#e6eef2}
+.contrib-sub{color:#9aa3ab}
+.github-calendar-card .calendar{background:transparent;padding:0;border-radius:8px;width:100%}
+
+/* Override github-calendar cell colors to use site green palette */
+.github-calendar-card .calendar rect[data-level="0"]{fill:rgba(255,255,255,0.03) !important}
+.github-calendar-card .calendar rect[data-level="1"]{fill:#064e3b !important}
+.github-calendar-card .calendar rect[data-level="2"]{fill:#0f9d58 !important}
+.github-calendar-card .calendar rect[data-level="3"]{fill:#16a34a !important}
+.github-calendar-card .calendar rect[data-level="4"]{fill:#34d399 !important}
+
+/* subtle border + rounded squares for SVG cells */
+.github-calendar-card .calendar rect{rx:2; ry:2; stroke:rgba(0,0,0,0.35); stroke-width:0.6px}
+
+/* Legend: present small boxes matching colors */
+.github-calendar-card .contrib-legend{display:flex;align-items:center;justify-content:center;gap:0.75rem;color:#9ca3af;width:100%}
+.github-calendar-card .contrib-legend .legend-swatch{width:12px;height:12px;border-radius:3px;display:inline-block}
+.github-calendar-card .contrib-legend .sw-0{background:rgba(255,255,255,0.03)}
+.github-calendar-card .contrib-legend .sw-1{background:#064e3b}
+.github-calendar-card .contrib-legend .sw-2{background:#0f9d58}
+.github-calendar-card .contrib-legend .sw-3{background:#16a34a}
+.github-calendar-card .contrib-legend .sw-4{background:#34d399}
+
+/* make the calendar responsive and centered */
+.github-calendar-card .calendar svg{width:100%;height:auto}
+
+/* small accessibility: pause on focus inside calendar */
+.github-calendar-card .calendar:focus-within svg rect{outline:none}
+
+@media (max-width:880px){
+  .experience-item{flex-direction:row;gap:0.75rem}
+  .experience-row{flex-direction:column;align-items:flex-start}
+}
+
+/* ---------- Projets ---------- */
+.projects-section{padding:3.5rem 1rem;background:transparent}
+.projects-inner{max-width:1100px;margin:0 auto}
+.projects-inner h2{font-size:2.2rem;margin-bottom:1rem;font-weight:800;color:#fff;display:inline-flex;align-items:center;gap:0.75rem}
+.projects-h2-icon{width:20px;height:20px;display:inline-block;filter:invert(1) brightness(1)}
+.projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem;margin-top:1rem}
+.project-card{background:linear-gradient(180deg, #0b0b0b 0%, #070707 100%);border:1px solid rgba(255,255,255,0.04);border-radius:12px;box-shadow:0 12px 30px rgba(2,6,23,0.6);display:flex;gap:1rem;overflow:hidden;align-items:stretch}
+.project-media{flex:0 0 48%;min-width:160px;height:220px;overflow:hidden}
+.project-media img{width:100%;height:100%;object-fit:cover;display:block}
+.project-body{flex:1 1 52%;min-width:0;padding:1.25rem;display:flex;flex-direction:column;gap:0.6rem}
+.project-title{font-size:1.1rem;font-weight:800;color:#fff;word-break:break-word}
+.project-desc{color:#d1d5db;overflow-wrap:break-word}
+.project-tags{display:flex;gap:0.5rem;flex-wrap:wrap;margin-top:6px}
+.project-tags span{background:rgba(255,255,255,0.03);padding:0.25rem 0.5rem;border-radius:6px;font-size:0.85rem;color:#9ca3af}
+.project-links{margin-top:auto;display:flex;gap:0.6rem}
+.project-links .btn{padding:0.55rem 0.9rem}
+
+/* Project CTA style inspired by attachment (small dark rounded button with icon left) */
+.project-cta{
+  display:inline-flex;
+  align-items:center;
+  gap:0.6rem;
+  padding:0.55rem 0.9rem;
+  background: rgba(12,14,16,0.6);
+  border:1px solid rgba(255,255,255,0.06);
+  color: #fff;
+  text-decoration:none;
+  border-radius:8px;
+  font-weight:700;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.02), 0 8px 22px rgba(2,6,23,0.6);
+  transition: transform .16s ease, filter .12s ease;
+}
+.project-cta img{width:16px;height:16px;display:block;filter:invert(1);}
+.project-cta:hover{
+  transform:translateY(-1px);
+  filter:brightness(1.01);
+}
+.project-cta:active{transform:translateY(-1px)}
+.project-cta:focus{outline:2px solid rgba(255,255,255,0.06);outline-offset:3px}
+
+/* Blooming halo behind project CTAs to match contact-cta/github-cta */
+.project-cta{position:relative;z-index:2}
+.project-cta::before{content:"";position:absolute;z-index:-1;left:50%;top:50%;transform:translate(-50%,-50%);width:180px;height:48px;background:radial-gradient(circle at center, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 22%, rgba(0,0,0,0) 45%);filter:blur(14px) saturate(1.05);border-radius:8px;pointer-events:none;opacity:0.92}
+
+/* Slightly different filled style for primary project action if needed */
+.project-cta.primary{background:linear-gradient(90deg,#06b6d4,#7c3aed);color:#fff;border:none}
+
+@media (max-width:880px){
+  .projects-grid{grid-template-columns:1fr;}
+  .project-card{flex-direction:column}
+  .project-media{width:100%;height:200px}
+}
+
+/* ---------- Contacts / Form ---------- */
+.contacts-section{padding:3.5rem 1rem;background:transparent}
+.contacts-inner{max-width:1100px;margin:0 auto}
+.contacts-inner h2{font-size:2.8rem;margin-bottom:0.5rem;font-weight:800;color:#fff}
+.contacts-sub{color:#9aa3ab;margin-bottom:1.25rem}
+
+.contact-form{background:linear-gradient(180deg,#070707,#0b0b0b);padding:1.25rem;border-radius:8px;border:1px solid rgba(255,255,255,0.04);box-shadow:0 18px 40px rgba(2,6,23,0.6);max-width:100%;}
+.contact-form input[type="email"], .contact-form textarea{
+  width:100%;
+  background: #0b0b0b;
+  border:1px solid rgba(255,255,255,0.06);
+  padding:18px 16px;
+  color:#e6eef2;
+  border-radius:6px;
+  font-family: SFMono-Regular, Menlo, Monaco, 'Roboto Mono', monospace;
+  font-size:1rem;
+  resize:vertical;
+}
+.contact-form textarea{min-height:180px}
+.contact-form input::placeholder, .contact-form textarea::placeholder{color:rgba(230,238,242,0.35);font-family:inherit}
+.contact-form .contact-form-actions{margin-top:1rem}
+.btn-send{background:#10b981;color:#021;border:none;padding:0.8rem 1.25rem;border-radius:10px;font-weight:700;box-shadow:0 8px 24px rgba(16,185,129,0.12);cursor:pointer;display:inline-flex;align-items:center;gap:0.6rem}
+.btn-send img{width:18px;height:18px;display:block;filter:invert(1) drop-shadow(0 6px 18px rgba(16,185,129,0.12))}
+.btn-send:hover{
+  transform:translateY(-1px);
+  filter:brightness(1.02);
+}
+
+/* Apply the project-button hover behavior to all buttons/links except the
+   primary hero `.contact-cta`. This keeps the Contact CTA visually unique. */
+a:not(.contact-cta):hover,
+button:not(.contact-cta):hover,
+.project-cta:hover,
+.download-cv:hover,
+.github-cta:hover,
+.btn:not(.contact-cta):hover {
+  transform:translateY(-1px);
+  filter:brightness(1.01);
+}
+.btn-send:active{transform:translateY(-1px)}
+
+.btn-send[disabled], .btn-send[aria-disabled="true"] {
+  opacity: 0.45;
+  filter: none;
+  box-shadow: none;
+  cursor: not-allowed;
+  transform: none !important;
+  pointer-events: none;
+}
+.btn-send[disabled] img, .btn-send[aria-disabled="true"] img { filter: none; opacity: 0.65 }
+.btn-send[disabled]:hover, .btn-send[aria-disabled="true"]:hover { transform: none; box-shadow: none; }
+
+.contact-confirmation{margin-top:1rem;padding:0.9rem 1rem;background:linear-gradient(180deg, rgba(16,185,129,0.12), rgba(16,185,129,0.06));border:1px solid rgba(16,185,129,0.14);color:#c7f6e5;border-radius:8px;font-weight:700;display:inline-block}
+.contact-confirmation[hidden]{display:none}
+
+@media (max-width:720px){
+  .contacts-inner h2{font-size:1.9rem}
+  .contact-form input[type="email"], .contact-form textarea{padding:14px}
+  .btn-send{padding:0.65rem 1rem}
+}
+
+/* image styling for intro */
+.video-play-btn{display:none}
+
+/* Layout for profile page */
+.profile-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.profile-container {
+  max-width: 1100px;
+  margin: 4rem auto;
+  padding: 2rem;
+  display: flex;
+  gap: 2.5rem;
+  align-items: flex-start;
+}
+.profile-aside {
+  width: 220px;
+  flex: 0 0 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.avatar {
+  width: 180px;
+  height: 180px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #1f2937, #111827);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 3.2rem;
+  color: #fff;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+}
+.socials {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  width: 100%;
+}
+.social {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.04);
+  color: inherit;
+  padding: 0.6rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.profile-main {
+  flex: 1;
+}
+.profile-name {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-bottom: 0.2rem;
+}
+.profile-role {
+  color: #9ca3af;
+  margin-bottom: 1rem;
+}
+.profile-bio {
+  max-width: 70ch;
+  margin-bottom: 1.25rem;
+  color: #d1d5db;
+}
+
+.profile-ctas {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.profile-skills h3 {
+  margin-bottom: 0.6rem;
+}
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  list-style: none;
+}
+.skills-list li {
+  background: rgba(255, 255, 255, 0.04);
+  padding: 0.45rem 0.7rem;
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.contact-section {
+  margin-top: auto;
+  background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.02));
+  padding: 3rem 1.25rem;
+  text-align: left;
+}
+.contact-section h4 {
+  margin-bottom: 0.4rem;
+}
+
+.contact-inner{max-width:1100px;margin:0 auto;border-top:1px solid rgba(255,255,255,0.06);padding-top:2.25rem}
+.contact-top{display:flex;align-items:center;gap:2.5rem}
+.switch-box{flex:0 0 auto}
+.contact-copy{flex:1}
+.contact-title{font-size:clamp(1.6rem,3.5vw,2.2rem);margin:0;color:#e5e7eb}
+.contact-desc{color:#9ca3af;margin-top:.6rem;max-width:78ch;line-height:1.4}
+
+/* Big switch variant */
+.big-switch{display:inline-block;width:96px;height:56px;position:relative}
+.big-switch .slider{border-radius:999px;background:#232323}
+.big-switch .slider::before{height:48px;width:48px;left:4px;bottom:4px;background:#fff;border-radius:50%;transition:all 300ms ease}
+.big-switch input:checked + .slider{background:#111}
+.big-switch input:checked + .slider::before{transform:translateX(40px)}
+
+.contact-bottom{margin-top:3.5rem}
+.contact-bottom{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.footer-legal{margin-left:auto;display:flex;align-items:center;font-family:inherit;font-size:inherit}
+.footer-legal .contact-link{margin-left:0}
+/* Make the legal link match the muted color used by other footer links */
+.footer-legal{color:#9ca3af}
+.contact-line{display:flex;flex-wrap:wrap;align-items:center;gap:1rem;color:#9ca3af}
+.contact-name{color:#d1d5db}
+.contact-email{color:inherit;text-decoration:underline dotted rgba(255,255,255,0.12);padding-left:4px}
+.contact-link{color:inherit;text-decoration:underline dotted rgba(255,255,255,0.12);margin-left:8px}
+
+@media (max-width:720px){
+  .contact-top{flex-direction:row;align-items:center}
+  .big-switch{width:72px;height:44px}
+  .big-switch .slider::before{height:36px;width:36px;left:4px;bottom:4px}
+  .big-switch input:checked + .slider::before{transform:translateX(28px)}
+  .contact-title{font-size:1.4rem}
+}
+@media (max-width:720px){
+  .contact-bottom{flex-direction:column;align-items:flex-start}
+  .footer-legal{margin-left:0;margin-top:0.75rem}
+}
+
+/* Toggle switch styles (container + switch) */
+.switch-container div {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.switch-container .icon {
+  width: 20px;
+  display: flex;
+}
+
+.container-small {
+  max-width: 360px;
+  border: 1px solid rgba(255,255,255,0.04);
+  padding: 8px 16px;
+  border-radius: 10px;
+  margin: 16px auto;
+  background: rgba(255,255,255,0.01);
+}
+
+.switch-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 15px;
+  margin: 8px 0;
+}
+
+.switch {
+  width: 60px;
+  height: 34px;
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+}
+
+.switch .slider {
+  position: absolute;
+  inset: 0;
+  background: #ccc;
+  border-radius: 34px;
+  transition: all 400ms ease;
+}
+
+.switch input {
+  display: none;
+}
+
+.switch .slider::before {
+  content: "";
+  position: absolute;
+  height: 26px;
+  width: 26px;
+  border-radius: 50%;
+  left: 4px;
+  bottom: 4px;
+  background: #fff;
+  transition: all 400ms ease;
+}
+
+.switch input:checked + .slider {
+  background: #34c759;
+}
+
+.switch input:checked + .slider::before {
+  transform: translateX(26px);
+}
+
+.switch-label {
+  display:flex;flex-direction:column;gap:2px
+}
+.switch-label .muted{color: #9ca3af;font-size:0.9rem}
+
+/* Responsive */
+@media (max-width: 880px) {
+  .profile-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 1.25rem;
+  }
+  .profile-aside {
+    width: 100%;
+    flex: 0 0 auto;
+    order: 0;
+  }
+  .profile-main {
+    width: 100%;
+  }
+  .avatar {
+    width: 140px;
+    height: 140px;
+    font-size: 2.4rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .avatar {
+    transition: none;
+  }
+  }
+
+.reveal-on-scroll{opacity:0;transform:translateY(18px);transition:opacity .90s cubic-bezier(.2,.9,.2,1), transform .90s cubic-bezier(.2,.9,.2,1);will-change:opacity,transform}
+.reveal-on-scroll.is-visible{opacity:1;transform:none}
+
+
+@keyframes faceid-hint-reveal {
+  from {
+    transform: translateX(-50%) translateY(22px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+  }
+}
+
+.faceid-hint.reveal-on-scroll.is-visible{
+  animation: faceid-hint-reveal .90s cubic-bezier(.2,.9,.2,1) forwards;
+  animation-delay: var(--reveal-delay, 1.5s);
+}
+
+.reveal-on-scroll[data-delay]{transition-delay:var(--reveal-delay, 0s)}
+
+@media (prefers-reduced-motion: reduce){
+  .reveal-on-scroll{transition:none;opacity:1;transform:none}
+}
+
+
+.animations-paused .slide-track { animation-play-state: paused !important }
+.animations-paused .slide-track * { animation-play-state: paused !important }
+.animations-paused .typewriter-name { animation-play-state: paused !important }
+
+.typewriter-name{display:inline-block;white-space:nowrap;overflow:hidden;border-right:.12em solid currentColor;padding-right:.1ch;--chars:13ch;width:0ch;animation:typing 2s steps(13,end) forwards, blink-caret .7s step-end infinite}
+@keyframes typing{from{width:0ch}to{width:var(--chars)}}
+@keyframes blink-caret{50%{border-color:transparent}}
+@media (prefers-reduced-motion: reduce) {
+  .typewriter-name {
+    animation: none;
+    width: var(--chars);
+    border-right: .12em solid transparent;
+  }
+  .btn {
+    transition: none;
+  }
+}
+
+
+a, button, .btn, .project-cta, .download-cv, .github-cta, .btn-send {
+  transition: transform .18s ease, filter .12s ease, box-shadow .18s ease;
+}
+
+a:hover, button:hover, .btn:hover, .project-cta:hover, .download-cv:hover, .github-cta:hover, .btn-send:hover {
+  transform: translateY(-6px) scale(1.02);
+  filter: brightness(1.06) saturate(1.02);
+  box-shadow: 0 14px 34px rgba(0,122,255,0.18);
+}
+
+
+@media (max-width:1024px) {
+  .hero{padding:5vh 1rem}
+  .hero-inner{padding:0 0.75rem}
+  .hero-shadow{width:120px;height:200px;bottom:6vh}
+  .contact-cta{margin:2.25rem auto 0}
+  .intro-summary{padding:3.25rem 1rem}
+  .projects-grid{gap:1rem}
+}
+
+@media (max-width:880px){
+  .nav-inner{padding:0 10px}
+  .hero{padding:4.5vh 0.9rem}
+  .hero-heading{font-size:clamp(1.6rem,6.5vw,4.4rem)}
+  .hero-name{font-size:clamp(0.95rem,2.8vw,1.1rem)}
+  .contact-cta{margin:2rem auto 0}
+  .intro-summary{padding:3rem 0.9rem}
+  .projects-grid{grid-template-columns:1fr}
+  .project-media{height:180px}
+}
+
+@media (max-width:720px){
+  html,body{font-size:15.5px}
+  .site-nav{height:56px;padding:0 0.6rem}
+  .hero{padding:6vh 0.75rem}
+  .hero-inner{padding:0}
+  .hero-heading{font-size:clamp(1.6rem,7.5vw,3.2rem)}
+  .contact-cta{margin:2rem auto 0;padding:0.6rem 0.9rem}
+  .intro-summary{margin-top:3rem;padding:2.25rem 0.9rem}
+  .intro-inner{gap:1rem}
+  .projects-grid{grid-template-columns:1fr}
+  .project-media{height:160px}
+  .carousel-slider{height:64px}
+  .carousel-slider .slide img{max-height:56px}
+  .contact-form input[type="email"], .contact-form textarea{padding:14px}
+  .contact-form textarea{min-height:140px}
+  .face-id-wrapper{width:72px;height:72px}
+  .faceid-hint{bottom:-78px;font-size:0.9rem}
+}
+
+@media (max-width:480px){
+  html,body{font-size:15px}
+  .site-title{font-size:0.92rem}
+  .nav-bubble{display:none}
+  .hero{padding:5.5vh 0.6rem}
+  .hero-heading{font-size:clamp(1.4rem,8.5vw,2.4rem)}
+  .contact-cta{margin:1.6rem auto 0;padding:0.5rem 0.8rem}
+  .intro-summary{margin-top:2.25rem;padding:1.5rem 0.6rem}
+  .github-calendar-card{padding:1rem}
+  .mobile-sidebar{width:92%}
+  .mobile-sidebar{padding:1.6rem 1rem}
+}
+
+@media (max-width:420px){
+  .contact-cta{box-shadow:none}
+  .github-cta{box-shadow:none}
+}
+
+/* Improve touch/mobile UX: reduce hover/transform effects and disable particle canvas on touch devices
+   - (pointer:coarse) typically matches phones & tablets with touch input
+   - (hover: none) matches devices that don't support hover
+   These rules keep visual polish on desktop while avoiding jumpy/teleporting particles and
+   large hover transforms on touch scroll. */
+@media (hover: none), (pointer: coarse) {
+  /* Disable hover transforms/shadows on touch devices to avoid visual jumps */
+  a:hover, button:hover, .btn:hover, .project-cta:hover, .download-cv:hover, .github-cta:hover, .btn:not(.contact-cta):hover, .contact-cta:hover {
+    transform: none !important;
+    filter: none !important;
+    box-shadow: none !important;
+  }
+
+  /* Make CTAs slightly larger/tap-friendly and reduce padding so they wrap nicely */
+  .contact-cta, .project-cta, .github-cta, .download-cv, .btn-send {
+    padding: 0.6rem 0.9rem !important;
+    font-size: 0.98rem !important;
+    border-radius: 10px !important;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+  }
+
+  /* Ensure buttons don't cause layout shifts on active/tap */
+  .contact-cta:active, .project-cta:active, .btn-send:active {
+    transform: none !important;
+  }
+
+  /* Hide the particle canvas on coarse-pointer devices to prevent teleport/jump issues during touch scroll */
+  .hero-network {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    width: 0 !important; /* avoid layout differences */
+    height: 0 !important;
+  }
+
+  /* Reduce heavy decorative pseudo-elements that can overlap/touch on small screens */
+  .contact-cta::before, .project-cta::before, .github-cta::before {
+    display: none !important;
+  }
+}
+
+/* Extra small screens: ensure buttons fit and text wraps without overflow */
+@media (max-width:360px) {
+  .contact-cta, .project-cta, .github-cta {
+    font-size: 0.92rem !important;
+    padding: 0.48rem 0.72rem !important;
+  }
+  .hero-heading{font-size:clamp(1.2rem,9.5vw,2.2rem)}
+}

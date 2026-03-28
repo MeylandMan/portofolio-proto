@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="fr">
+   
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- HTML Meta Tags -->
+  <title>Nathan Michel | Développeur Web Fullstack</title>
+  <meta name="description" content="Portfolio de Nathan Michel - Développer web fullstack passionné par le développement créatif de site web.">
+
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:url" content="https://nathannkombe.tech/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Nathan Michel | Développeur Web Fullstack">
+  <meta property="og:description" content="Portfolio de Nathan Michel - Développer web fullstack passionné par le développement créatif de site web.">
+  <meta property="og:image" content="https://nathannkombe.tech/public/images/OpenGraph.jpg">
+  <meta property="og:image:width" content="1736">
+  <meta property="og:image:height" content="1514">
+
+  <!-- Twitter Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="twitter:domain" content="nathannkombe.tech">
+  <meta property="twitter:url" content="https://nathannkombe.tech/">
+  <meta name="twitter:title" content="Nathan Michel | Développeur Web Fullstack">
+  <meta name="twitter:description" content="Portfolio de Nathan Michel - Développer web fullstack passionné par le développement créatif de site web.">
+  <meta name="twitter:image" content="https://nathannkombe.tech/public/images/OpenGraph.jpg">
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/public/favicon/Icon-iOS-Dark-1024x1024@1x.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/public/favicon/Icon-iOS-Dark-1024x1024@1x.png">
+  <link rel="apple-touch-icon" href="/public/favicon/Icon-iOS-Dark-1024x1024@1x.png">
+  <meta name="theme-color" content="#000000" />
+  <link href="./src/css/style.css" rel="stylesheet">
+  <!-- GitHub calendar responsive CSS -->
+  <link rel="stylesheet" href="API/Github-Activity/github-calendar.css">
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="site-nav" role="navigation" aria-label="Navigation principale">
+      <div class="nav-inner">
+        <div class="nav-left">
+          <a class="site-title" href="#">Nathan Michel</a>
+        </div>
+        <div class="nav-right">
+          <a class="nav-link" href="#formation-heading" title="Formation"><img src="public/icons/mortar-board-16.svg" alt="Formation icon" aria-hidden="true"></a>
+          <a class="nav-link" href="#experience-heading" title="Expérience"><img src="public/icons/organization-16.svg" alt="Expérience icon" aria-hidden="true"></a>
+          <a class="nav-link" href="#projects-heading" title="Projets"><img src="public/icons/repo-16.svg" alt="Projets icon" aria-hidden="true"></a>
+          <a class="nav-link" href="#contrib-heading" title="Contributions"><img src="public/icons/git-commit-16.svg" alt="Contributions icon" aria-hidden="true"></a>
+          <a class="nav-link" href="#tools-heading" title="Outils"><img src="public/icons/package-16.svg" alt="Outils icon" aria-hidden="true"></a>
+          <a class="nav-link" href="#skills-heading" title="Compétences"><img src="public/icons/terminal-16.svg" alt="Compétences icon" aria-hidden="true"></a>
+          <a class="nav-cta" href="public/docs/nathan-cv.pdf" target="_blank" rel="noopener" title="Lire mon CV">Lire mon CV</a>
+          <a class="nav-bubble" href="#contact" title="On discute ?">Hey ! On discute ?</a>
+        </div>
+        <!-- Mobile kebab toggle -->
+        <button id="mobileNavToggle" class="mobile-nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
+          <img src="public/icons/kebab-horizontal-16.svg" alt="menu">
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile sidebar -->
+    <div class="mobile-nav-backdrop" id="mobileNavBackdrop" hidden></div>
+    <aside class="mobile-sidebar" id="mobileSidebar" aria-hidden="true">
+      <nav aria-label="Navigation mobile">
+        <ul>
+          <li><a href="#formation-heading">Formation</a></li>
+          <li><a href="#experience-heading">Expérience</a></li>
+          <li><a href="#projects-heading">Projets</a></li>
+          <li><a href="#contrib-heading">Contributions</a></li>
+          <li><a href="#tools-heading">Outils</a></li>
+          <li><a href="#skills-heading">Compétences</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </aside>
+    <!-- Face ID intro -->
+    <div class="faceid-overlay" aria-hidden="false">
+      <div class="canvas">
+        <div class="face-id-wrapper">
+          <svg class="face-id-default" version="1.1" viewBox="0 0 30 30">
+            <path d="M12.062 20c.688.5 1.688 1 2.938 1s2.25-.5 2.938-1M20 12v2M10 12v2M15 12v4a1 1 0 0 1-1 1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"/>
+            <g fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10">
+              <path d="M26 9V6a2 2 0 0 0-2-2h-3M9 4H6a2 2 0 0 0-2 2v3M21 26h3a2 2 0 0 0 2-2v-3M4 21v3a2 2 0 0 0 2 2h3"/>
+            </g>
+          </svg>
+          <div class="circle green"></div>
+          <div class="circle blue"></div>
+          <div class="circle purple"></div>
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80">
+            <path class="path-tick" stroke="#FFF" stroke-width="5" fill="none" stroke-linecap="butt" stroke-linejoin="butt" d="M 25,45 35,55 60,30"/>
+          </svg>
+  
+  <div class="faceid-hint reveal-on-scroll" data-delay aria-hidden="true" style="--reveal-delay:1.5s">Cliquer puis survolez avec la souris pour activer</div>
+        </div>
+      </div>
+    </div>
+    <main class="hero">
+      <canvas id="hero-network" class="hero-network" aria-hidden="true"></canvas>
+      <div class="hero-inner">
+        <div class="hero-name">Nathan Michel</div>
+        <h1 class="hero-heading">Je crée des sites web<br>et des applications.</h1>
+          <a class="contact-cta" href="#contact">
+            <img src="public/icons/comment-16.svg" alt="Comment icon" aria-hidden="true">
+            Contactez-moi
+          </a>
+          <div class="hero-shadow" aria-hidden="true"></div>
+      </div>
+    </main>
+
+    <!-- About -->
+    <section class="intro-summary" aria-labelledby="intro-heading">
+      <div class="intro-inner">
+        <div class="intro-left">
+          <h2 id="intro-heading">Bonjour ! Je suis Nathan Michel, Développeur Web Fullstack</h2>
+          <p class="intro-copy">J’accorde une grande importance à l’expérience utilisateur, au design et l'accessibilité de mes projets.</p>
+          <p class="intro-copy">J'adore le développement et le design. Je peux donc créer des sites web à la fois esthétiques et fonctionnels. Je suis toujours à la recherche de nouvelles opportunités d'apprentissage et de développement.</p>
+        </div>
+
+        <div class="intro-right">
+          <div class="intro-image-wrap">
+            <img class="intro-image" src="public/images/nathan%20memoji.png" alt="Nathan memoji">
+            <a class="download-cv" href="public/docs/nathan-cv.pdf" download>
+              <img class="download-icon" src="public/icons/move-to-bottom-16.svg" alt="" aria-hidden="true">
+              Télécharger mon CV
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Formation -->
+    <section class="formation-section" aria-labelledby="formation-heading">
+      <div class="formation-inner">
+      <h2 id="formation-heading"><img class="formation-h2-icon" src="public/icons/mortar-board-16.svg" alt="" aria-hidden="true"> Formation</h2>
+
+        <div class="formation-list">
+          <div class="formation-item">
+            <div class="formation-media">
+              
+              <img class="formation-logo" src="public/images/iticparis.jpg" alt="ITIC Paris logo">
+            </div>
+
+            <div class="formation-body">
+              <div class="formation-row">
+                <div class="formation-info">
+                  <div class="formation-school">ITIC Paris</div>
+                  <div class="formation-degree">BTS SIO · Initial Option SLAM (Solutions Logicielles et Applications Métiers)</div>
+                </div>
+
+                
+              </div>
+
+              <div class="formation-dates">sept. 2024 - aujourd'hui </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Expérience -->
+    <section class="experience-section" aria-labelledby="experience-heading">
+      <div class="experience-inner">
+        <h2 id="experience-heading"><img class="experience-h2-icon" src="public/icons/organization-16.svg" alt="" aria-hidden="true"> Expérience</h2>
+
+        <div class="experience-list">
+          <!-- Freelance + Stage regroupés: deux sous-entrées dans le même conteneur -->
+          <div class="experience-item grouped no-reveal">
+            <!-- Sous-entrée: Freelance -->
+            <div class="experience-entry">
+              <div class="experience-media">
+                <img class="experience-logo" src="public/images/EVA.jpeg" alt="EVA Studio logo">
+              </div>
+              <div class="experience-body">
+                <div class="experience-row">
+                  <div class="experience-info">
+                    <div class="experience-title">Développeur web Fullstack freelance</div>
+                    <div class="experience-company">Indépendant</div>
+                  </div>
+
+                  <div class="experience-dates">août 2025 - aujourd'hui</div>
+                </div>
+
+                <div class="experience-location">Ville de Paris, Île-de-France, France · Hybride</div>
+                <ul class="experience-desc">
+                  <li>Conception, développement et déploiement d’applications web et mobiles sur mesure.</li>
+                  <li>Prise en charge de projets complets : analyse des besoins, architecture technique, développement front/back-end, intégration UI/UX, tests et mise en production.</li>
+                  <li>Collaboration avec des clients variés.</li>
+                  <li>Maintenance, sécurité et SEO</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Séparateur visuel + petite marge -->
+            <div class="experience-entry-sep" aria-hidden="true"></div>
+
+            <!-- Sous-entrée: Stage -->
+            <div class="experience-entry">
+              <div class="experience-media">
+                <img class="experience-logo" src="public/images/Screenfix.jpeg" alt="Screenfix logo">
+              </div>
+              <div class="experience-body">
+                <div class="experience-row">
+                  <div class="experience-info">
+                    <div class="experience-title">Stagiaire en développement Web</div>
+                    <div class="experience-company">Screenfix · CDD</div>
+                  </div>
+
+                  <div class="experience-dates">juin 2025 - juil. 2025 · 1 mois</div>
+                </div>
+
+                <div class="experience-location">Ville de Paris, Île-de-France, France · Hybride</div>
+                <ul class="experience-desc">
+                  <li>Conception, développement et déploiement du site web de la boite.</li>
+                  <li>Benchmarking des sites similaires et réflexion autour de fonctionnalités.</li>
+                  <li>Création de maquettes et prototypes sur Figma.</li>
+                  <li>Wireframing et design d'interfaces utilisateur.</li>
+                  <li>Déploiement, optimisation SEO et performance du site.</li>
+                  <li>Intégration des templates emails à l'API de prise de rendez-vous.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projets section -->
+    <section class="projects-section" aria-labelledby="projects-heading">
+      <div class="projects-inner">
+        <h2 id="projects-heading"><img class="projects-h2-icon" src="public/icons/repo-16.svg" alt="" aria-hidden="true"> Projets</h2>
+
+        <div class="projects-grid">
+          <!-- Project 1 -->
+          <article class="project-card">
+            <div class="project-media">
+              <img src="public/images/Capture d’écran 2025-11-13 à 07.23.44.png" alt="Screenfix - site vitrine">
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">Screenfix</h3>
+              <p class="project-desc">Site web vitrine pour un service de réparation de smartphones et prise de rendez-vous via formulaire.</p>
+              <div class="project-tags">
+                <span>HTML</span><span>Tailwind CSS</span><span>JavaScript</span>
+              </div>
+              <div class="project-links">
+                <a class="project-cta" href="https://screenfix.fr" target="_blank" rel="noopener noreferrer">
+                  <img src="public/icons/rss-16.svg" alt="Démo" aria-hidden="true">
+                  Démo
+                </a>
+                <a class="project-cta" href="https://github.com/Squid-Nayth/Screenfix" target="_blank" rel="noopener noreferrer">
+                  <img src="public/icons/mark-github-16.svg" alt="GitHub" aria-hidden="true">
+                  GitHub
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 2 -->
+          <article class="project-card">
+            <div class="project-media">
+              <img src="public/images/163288-logo_java_pile_complete-java-langage_de_programmation-javascript-permanent-3840x2160.png" alt="Java - Logo">
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">Application de gestion des employés des ligues</h3>
+              <p class="project-desc">Projet de fin d'étude du BTS SIO visant à créer une application Java en ligne de commande permettant la gestion des employés des ligues de la M2L.</p>
+              <div class="project-tags">
+                <span>Java</span><span>SQL</span><span>MySQL</span>
+              </div>
+              <div class="project-links">
+                <a class="project-cta" href="https://github.com/Squid-Nayth/Atelier-Pro">
+                  <img src="public/icons/mark-github-16.svg" alt="GitHub" aria-hidden="true">
+                  GitHub
+                </a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Contributions GitHub -->
+    <section class="contributions-section" aria-labelledby="contrib-heading">
+      <div class="contributions-inner">
+        <h2 id="contrib-heading"><img class="experience-h2-icon" src="public/icons/git-commit-16.svg" alt="GitHub" aria-hidden="true"> Contributions GitHub</h2>
+        <p class="contrib-sub">Mon parcours de programmation visualisé</p>
+
+  <div class="github-calendar-card" style="border-radius:14px; overflow:hidden;">
+           <div class="calendar">
+            <!-- Loading stuff -->
+            Loading the calendar...
+           </div>
+        
+        
+           <script src="API/Github-Activity/github-calendar.js"></script>
+           <!-- GitHub calendar script -->
+           <script>
+            (function(){
+              // Init calendar
+              try {
+                GitHubCalendar(".calendar", "Squid-Nayth", {
+                  responsive: true,
+                  tooltips: true,
+                  global_stats: false // disable contribution stats
+                });
+
+                // Remove the 'Skip to contributions year list' link if the widget injects it.
+                function removeSkipLink(){
+                  try{
+                    var card = document.querySelector('.github-calendar-card');
+                    if(!card) return;
+                    var anchors = card.querySelectorAll('a');
+                    anchors.forEach(function(a){
+                      var t = (a.textContent || '').trim().toLowerCase();
+                      if(t.indexOf('skip to') === 0) a.remove();
+                    });
+                  }catch(e){}
+                }
+
+                // try shortly after init
+                setTimeout(removeSkipLink, 150);
+
+                // watch for async inserts for a short window
+                var target = document.querySelector('.github-calendar-card .calendar') || document.querySelector('.github-calendar-card');
+                if(target && window.MutationObserver){
+                  var obs = new MutationObserver(function(){ removeSkipLink(); });
+                  obs.observe(target, { childList: true, subtree: true });
+                  setTimeout(function(){ try{ obs.disconnect(); }catch(e){} }, 5000);
+                }
+              }catch(e){ /* ignore */ }
+            })();
+          </script>
+          
+
+          <div class="contrib-legend">Contributions en 2025</div>
+
+          <a class="btn github-cta" href="https://github.com/Squid-Nayth" target="_blank" rel="noopener noreferrer">
+            <img src="public/images/github.png" alt="GitHub" style="width:20px;height:20px;margin-right:8px;filter:invert(1);"> Voir le profil GitHub
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!--Outils & Compétences -->
+    <section class="carousel-section" aria-labelledby="tools-heading">
+      <div class="carousel-inner">
+        <h2 id="tools-heading"><img class="experience-h2-icon" src="public/icons/package-16.svg" alt="" aria-hidden="true"> Outils de développement</h2>
+
+  <div class="carousel-slider tools-slider" aria-hidden="false">
+          <div class="slide-track">
+            <div class="slide"><img src="public/images/figma.svg" alt="Figma"></div>
+            <div class="slide"><img src="public/images/git.svg" alt="Git"></div>
+            <div class="slide"><img src="public/images/docker.png" alt="Docker"></div>
+            <div class="slide"><img src="public/images/icons8-github-94.png" alt="Github"></div>
+            <div class="slide"><img src="public/images/intellij-original.svg" alt="IntelliJ"></div>
+            <div class="slide"><img src="public/images/icons8-photoshop-96.png" alt="Photoshop"></div>
+            <div class="slide"><img src="public/images/vite.svg" alt="Vite"></div>
+            <div class="slide"><img src="public/images/nodejs-original-wordmark.svg" alt="Node.js"></div>
+            <div class="slide"><img src="public/images/NPM.svg" alt="npm"></div>
+            <div class="slide"><img src="public/images/Android Studio.svg" alt="Webpack"></div>
+            <div class="slide"><img src="public/images/Visual Studio Code (VS Code).svg" alt="vscode"></div>
+            
+
+            <div class="slide"><img src="public/images/figma.svg" alt="Figma"></div>
+            <div class="slide"><img src="public/images/git.svg" alt="Git"></div>
+            <div class="slide"><img src="public/images/docker.png" alt="Docker"></div>
+            <div class="slide"><img src="public/images/icons8-github-94.png" alt="Github"></div>
+            <div class="slide"><img src="public/images/intellij-original.svg" alt="IntelliJ"></div>
+            <div class="slide"><img src="public/images/icons8-photoshop-96.png" alt="Photoshop"></div>
+            <div class="slide"><img src="public/images/vite.svg" alt="Vite"></div>
+            <div class="slide"><img src="public/images/nodejs-original-wordmark.svg" alt="Node.js"></div>
+            <div class="slide"><img src="public/images/NPM.svg" alt="npm"></div>
+            <div class="slide"><img src="public/images/Android Studio.svg" alt="Webpack"></div>
+            <div class="slide"><img src="public/images/Visual Studio Code (VS Code).svg" alt="vscode"></div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="carousel-section" aria-labelledby="skills-heading">
+      <div class="carousel-inner">
+        <h2 id="skills-heading"><img class="experience-h2-icon" src="public/icons/terminal-16.svg" alt="" aria-hidden="true"> Compétences</h2>
+
+  <div class="carousel-slider skills-slider" aria-hidden="false">
+          <div class="slide-track">
+            <div class="slide"><img src="public/images/html5-original-wordmark.svg" alt="HTML5"></div>
+            <div class="slide"><img src="public/images/css3-original-wordmark.svg" alt="CSS3"></div>
+            <div class="slide"> <img src="public/images/JavaScript.svg" alt="JavaScript"></div>
+            <div class="slide"><img src="public/images/typescript-original.svg" alt="TypeScript"></div>
+            <div class="slide"><img src="public/images/java-original.svg" alt="Java"></div>
+            <div class="slide"><img src="public/images/php-original.svg" alt="PHP"></div>
+            <div class="slide"><img src="public/images/csharp-original.svg" alt="C#"></div>
+            <div class="slide"><img src="public/images/mysql-original-wordmark.svg" alt="MySQL"></div>
+            <div class="slide"><img src="public/images/tailwind.svg" alt="Tailwind CSS"></div>
+            <div class="slide"><img src="public/images/react.png" alt="React"></div>
+            <div class="slide"><img src="public/images/shell.svg" alt="Shell"></div>
+            <div class="slide"><img src="public/images/linux-original.svg" alt="Linux"></div>
+            <div class="slide"><img src="public/images/icons8-mongo-db-96.png" alt="MongoDB"></div>
+            <div class="slide"><img src="public/images/bash.svg" alt="Bash"></div>
+            <div class="slide"><img src="public/images/Kotlin.svg" alt="Kotlin"></div>
+
+
+
+
+
+            <div class="slide"><img src="public/images/html5-original-wordmark.svg" alt="HTML5"></div>
+            <div class="slide"><img src="public/images/css3-original-wordmark.svg" alt="CSS3"></div>
+            <div class="slide"> <img src="public/images/JavaScript.svg" alt="JavaScript"></div>
+            <div class="slide"><img src="public/images/typescript-original.svg" alt="TypeScript"></div>
+            <div class="slide"><img src="public/images/java-original.svg" alt="Java"></div>
+            <div class="slide"><img src="public/images/php-original.svg" alt="PHP"></div>
+            <div class="slide"><img src="public/images/csharp-original.svg" alt="C#"></div>
+            <div class="slide"><img src="public/images/mysql-original-wordmark.svg" alt="MySQL"></div>
+            <div class="slide"><img src="public/images/tailwind.svg" alt="Tailwind CSS"></div>
+            <div class="slide"><img src="public/images/react.png" alt="React"></div>
+            <div class="slide"><img src="public/images/shell.svg" alt="Shell"></div>
+            <div class="slide"><img src="public/images/linux-original.svg" alt="Linux"></div>
+            <div class="slide"><img src="public/images/icons8-mongo-db-96.png" alt="MongoDB"></div>
+            <div class="slide"><img src="public/images/bash.svg" alt="Bash"></div>
+            <div class="slide"><img src="public/images/Kotlin.svg" alt="Kotlin"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contacts -->
+    <section id="contact" class="contacts-section" aria-labelledby="contacts-heading">
+      <div class="contacts-inner">
+        <h2 id="contacts-heading">Contactez-moi !</h2>
+        <p class="contacts-sub">N'hésitez pas à me contacter pour des collaborations ou simplement pour un bonjour amical 👋</p>
+
+        <form class="contact-form" action="https://send.pageclip.co/x9P4RNnHy2HZ41dDPis1BWlV4peO4ZW9/Contact" method="post" novalidate>
+          <label class="sr-only" for="cf-email">Votre Email</label>
+          <input id="cf-email" name="email" type="email" placeholder="Votre Email" required>
+
+          <label class="sr-only" for="cf-message">Votre Message</label>
+          <textarea id="cf-message" name="message" rows="8" placeholder="Votre Message" required></textarea>
+          <div class="contact-form-actions">
+            <button type="submit" class="btn-send">
+              <img src="public/icons/paper-airplane-16.svg" alt="Envoyer" aria-hidden="true">
+              Envoyer
+            </button>
+          </div>
+          <div class="contact-confirmation" role="status" aria-live="polite" hidden>
+            Merci — votre message a bien été envoyé.
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <footer class="site-footer contact-section">
+        <div class="contact-inner">
+          <div class="contact-top">
+            <div class="switch-box">
+              <label class="switch big-switch" title="Notifications">
+                <input type="checkbox" id="emailToggle" aria-checked="false">
+                <span class="slider" aria-hidden="true"></span>
+              </label>
+            </div>
+
+            <div class="contact-copy">
+              <h2 class="contact-title">Vous aimez mon travail ?</h2>
+              <p class="contact-desc">Activez les notifications pour être au courant des nouveautés apportées à mon portfolio. Pas plus de 3 à 4 notifications par an.</p>
+            </div>
+          </div>
+
+          <div class="contact-bottom">
+            <div class="contact-line">
+              <span class="contact-name">Nathan Michel &copy; 2025 </span>
+              <span class="contact-spacer">&nbsp;&mdash;&nbsp;</span>
+              <a class="contact-email" href="mailto:nathanmichel@eva-studio.dev">nathanmichel@eva-studio.dev</a>
+              <a class="contact-link" href="https://www.linkedin.com/in/nathan-michel-nkombe-lasseni-474ab930a/">LinkedIn</a>
+              <a class="contact-link" href="https://github.com/Squid-Nayth">GitHub</a>
+              <a class="contact-link" href="https://x.com/nayth_exe">Twitter</a>
+
+
+            </div>
+          </div>
+        </div>
+      </footer>
+    </main>
+    
+    
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.emailjs.com/sdk/3.2.0/email.min.js"></script>
+    <script>
+      // Initialise EmailJS
+      if (window.emailjs) {
+        try { emailjs.init('J-R25uVYKuSZlk0kL'); } catch (e) { /* ignore */ }
+      }
+    </script>
+    <!-- API -->
+    <script src="src/js/api.js" defer></script>
+    <script src="src/js/script.js" defer></script>
+  <script src="src/js/particles.js" defer></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        try {
+          var overlay = document.querySelector('.faceid-overlay');
+          var hint = document.querySelector('.faceid-hint.reveal-on-scroll');
+          if (!hint) return;
+          // Only reveal if the overlay is currently visible (not hidden)
+          if (overlay && overlay.classList.contains('hidden')) return;
+          setTimeout(function () { hint.classList.add('is-visible'); }, 1500);
+        } catch (e) { /* ignore errors */ }
+      });
+    </script>
+    
+    
+  </body>
+</html>
