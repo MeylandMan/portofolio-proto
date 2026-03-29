@@ -119,6 +119,18 @@ body {
 .nav-cta{margin-left:6px;padding:6px 10px;border-radius:999px;background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--text-primary);font-weight:700;text-decoration:none}
 .nav-bubble{margin-left:8px;padding:6px 12px;border-radius:999px;background:#007aff;color:#fff;text-decoration:none;font-weight:800;box-shadow:var(--card-shadow)}
 
+/* ---------- THEME TOGGLE ---------- */
+.theme-toggle-btn{background:none;border:none;cursor:pointer;color:var(--text-primary);position:relative;width:34px;height:34px}
+.theme-toggle-btn svg{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);transition:opacity .3s ease,transform .3s ease}
+[data-bs-theme="dark"] .theme-toggle-btn .icon-sun{opacity:1;transform:translate(-50%,-50%) rotate(0deg)}
+[data-bs-theme="dark"] .theme-toggle-btn .icon-moon{opacity:0;transform:translate(-50%,-50%) rotate(-90deg)}
+[data-bs-theme="light"] .theme-toggle-btn .icon-sun{opacity:0;transform:translate(-50%,-50%) rotate(90deg)}
+[data-bs-theme="light"] .theme-toggle-btn .icon-moon{opacity:1;transform:translate(-50%,-50%) rotate(0deg)}
+[data-bs-theme="light"] .nav-link svg{fill:var(--text-secondary)}
+[data-bs-theme="light"] .nav-link:hover svg{fill:var(--text-primary)}
+[data-bs-theme="light"] .nav-cta{border-color:rgba(0,0,0,0.12);color:var(--text-primary)}
+.mobile-theme-toggle{background:none;border:1px solid var(--card-border);color:var(--text-primary);padding:8px 16px;border-radius:10px;cursor:pointer;width:100%;text-align:left;font-size:inherit;font-family:inherit}
+
 main{padding-top:64px}
 
 @media (max-width:880px){

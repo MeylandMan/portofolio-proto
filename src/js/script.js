@@ -810,3 +810,36 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
+/* ---------- THEME TOGGLE ---------- */
+(function () {
+  var html = document.documentElement;
+  var STORAGE_KEY = 'portfolio-theme';
+
+  // Restore saved preference (or default to dark)
+  var saved = localStorage.getItem(STORAGE_KEY);
+  if (saved === 'light' || saved === 'dark') {
+    html.setAttribute('data-bs-theme', saved);
+  } else {
+    // Respect OS preference
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+      html.setAttribute('data-bs-theme', 'light');
+    } else {
+      html.setAttribute('data-bs-theme', 'dark');
+    }
+  }
+
+  function toggle() {
+    var current = html.getAttribute('data-bs-theme');
+    var next = current === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-bs-theme', next);
+    localStorage.setItem(STORAGE_KEY, next);
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    var btn = document.getElementById('themeToggle');
+    var btnMobile = document.getElementById('themeToggleMobile');
+    if (btn) btn.addEventListener('click', toggle);
+    if (btnMobile) btnMobile.addEventListener('click', toggle);
+  });
+})();
+
